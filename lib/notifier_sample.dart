@@ -3,33 +3,21 @@ import 'package:generator_sample/provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class NotifierSample extends ConsumerWidget {
-  NotifierSample({Key? key}) : super(key: key);
-
-  final List<String> _valueList = ['A', 'B', 'C', 'D'];
+  const NotifierSample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final checkList = ref.watch(checkListProvider);
+    final isCheckValue = ref.watch(checkValueProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifier Sample'),
       ),
       body: Center(
-        child: ListView.builder(
-          itemCount: _valueList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(_valueList[index]),
-              trailing: Checkbox(
-                value: checkList[index],
-                onChanged: (bool? value) {
-                  ref
-                      .read(checkListProvider.notifier)
-                      .updateListElement(index, value!);
-                },
-              ),
-            );
+        child: Checkbox(
+          value: isCheckValue,
+          onChanged: (bool? value) {
+            ref.read(checkValueProvider.notifier).updateCheckValue(value!);
           },
         ),
       ),

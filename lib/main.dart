@@ -23,19 +23,20 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('NotifierProvider Sample'),
+      appBar: AppBar(
+        title: const Text('NotifierProvider Sample'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const NotifierSample()),
+            );
+          },
+          child: const Text('Notifier Sample'),
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NotifierSample()),
-              );
-            },
-            child: const Text('Notifier Sample'),
-          ),
-        ));
+      ),
+    );
   }
 }
