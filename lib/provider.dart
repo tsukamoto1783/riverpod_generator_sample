@@ -4,12 +4,15 @@ part 'provider.g.dart';
 
 @riverpod
 class CheckValue extends _$CheckValue {
-  // 初期値を作る.
   @override
   bool build() {
     ref.onDispose(() {
-      print("dispose");
+      print("dispose()");
     });
+
+    print("build()");
+
+    // stateの初期値はfalse
     return false;
   }
 

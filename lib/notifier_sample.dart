@@ -13,13 +13,19 @@ class NotifierSample extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Notifier Sample'),
       ),
-      body: Center(
-        child: Checkbox(
-          value: isCheckValue,
-          onChanged: (bool? value) {
-            ref.read(checkValueProvider.notifier).updateCheckValue(value!);
-          },
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          isCheckValue ? const Text("ON") : const Text("OFF"),
+          Center(
+            child: Checkbox(
+              value: isCheckValue,
+              onChanged: (bool? value) {
+                ref.read(checkValueProvider.notifier).updateCheckValue(value!);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
